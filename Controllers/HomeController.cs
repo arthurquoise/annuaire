@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,7 +21,20 @@ namespace annuaire.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Sites = Site.GetSites();
+            ViewBag.Departments = Department.GetDepartments();
+
             return View();
+        }
+
+        public IActionResult EmployeeList()
+        {
+            return View(Employee.GetEmployees());
+        }
+
+        public IActionResult EmployeeDetail(int id)
+        {
+            return View(Employee.GetEmployee(id));
         }
 
         public IActionResult Privacy()

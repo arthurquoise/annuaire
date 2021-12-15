@@ -1,0 +1,37 @@
+﻿@model Employee
+
+<div class="container">
+    <h1>Détail du salarié</h1>
+    @if (Model == null)
+    {
+    <div>
+        aucun contact avec cet id
+    </div>
+    }
+    else
+    {
+    <div>
+        Nom : @Model.FirstName
+    </div>
+    <div>
+        Prénom : @Model.LastName
+    </div>
+    <div>
+        Téléphone fixe : @Model.LandlinePhone
+    </div>
+    <div>
+        Téléphone mobile : @Model.MobilePhone
+    </div>
+    <div>
+        Email : @Model.Email
+    </div>
+    <div>
+        Site : @Model.Site.SiteName
+    </div>
+    <div>
+        Departement : @Model.Department.DepartmentName
+    </div>
+
+    }
+
+</div>
