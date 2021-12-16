@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace annuaire.Controllers
 {
-    public class Auth : Controller
+    public class AuthController : Controller
     {
         public IActionResult Login()
         {

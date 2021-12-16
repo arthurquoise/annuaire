@@ -41,7 +41,7 @@ namespace annuaire.Controllers
                 where += (where == "") ? $"department_id = {departmentId}" : $" AND department_id like {departmentId}";
             }
 
-            if (departmentId != 0)
+            if (siteId != 0)
             {
                 where += (where == "") ? $"site_id = {siteId}" : $" AND site_id like {siteId}";
             }

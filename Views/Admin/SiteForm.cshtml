@@ -3,3 +3,24 @@
 *@
 @{
 }
+@model Site
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="@ViewBag.Action">
+        <input type="text" class="form-control" id="siteId" name="siteId" hidden value="@(Model != null ? Model.SiteId : "")">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="SiteName">Ville</label>
+                <input type="text" class="form-control" name="SiteName" id="siteName" value="@(Model != null ? Model.SiteName : "")">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="siteType">Type de site</label>
+                <input type="text" class="form-control" id="siteType" name="siteType" value="@(Model != null ?Model.SiteType : "")">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+</div>
+
+
+    

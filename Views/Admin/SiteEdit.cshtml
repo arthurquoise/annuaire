@@ -11,3 +11,32 @@
         @ViewBag.Message
     </div>
 }
+
+<div class="container">
+
+    <a asp-controller="Admin" asp-action="SiteForm">Créer un site</a>
+
+    <table class="table mt-2">
+        <thead>
+            <tr>
+                <th scope="col">Id site</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Type</th>
+                <th scope="col">Editer</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Site s in Model)
+            {
+                <tr>
+                    <td>@s.SiteId</td>
+                    <td>@s.SiteName</td>
+                    <td>@s.SiteType</td>
+                    <td><a asp-area="" asp-controller="Admin" asp-action="SiteForm" asp-route-id="@s.SiteId">Edit</a></td>
+                    <td><a asp-area="" asp-controller="Admin" asp-action="SiteDelete" asp-route-id="@s.SiteId">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

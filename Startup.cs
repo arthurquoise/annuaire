@@ -1,3 +1,4 @@
+using annuaire.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +23,12 @@ namespace annuaire
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Add services to the session
+            services.AddSession();
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
+            //Use our services previously created
+            services.AddTransient<ILogin, LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +47,8 @@ namespace annuaire
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

@@ -73,7 +73,7 @@ namespace annuaire.Models
             request = "SELECT COUNT(*) FROM employee WHERE department_id = @DepartmentId";
             connection = Db.Connection;
             command = new MySqlCommand(request, connection);
-            command.Parameters.Add(new MySqlParameter("@SiteId", DepartmentId));
+            command.Parameters.Add(new MySqlParameter("@DepartmentId", DepartmentId));
             connection.Open();
             reader = command.ExecuteReader();
 
