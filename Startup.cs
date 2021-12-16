@@ -55,6 +55,10 @@ namespace annuaire
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(name: "Auth",
+                pattern: "Auth/{*Login}",
+                defaults: new { controller = "Auth", action = "Login" });
             });
         }
     }

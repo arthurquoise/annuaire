@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace annuaire.Services
 {
-    interface ILogin
+    public interface ILogin
     {
         void SaveAccessToSession(string username, string password);
         bool IsLogin();

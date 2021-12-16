@@ -1,4 +1,5 @@
 ﻿using annuaire.Models;
+using annuaire.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,29 @@ namespace annuaire.Controllers
 {
     public class AdminController : Controller
     {
+        private ILogin _loginService;
+
+        public AdminController(ILogin login)
+        {
+            _loginService = login;
+        }
+
         public IActionResult Index()
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         public IActionResult SiteEdit(string message)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.Message = message;
 
             return View(Site.GetSites());
@@ -24,6 +41,12 @@ namespace annuaire.Controllers
         //Delete a site
         public IActionResult SiteDelete(int id)
         {
+
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             string msg = null;
 
             Site site = Site.GetSite(id);
@@ -44,6 +67,11 @@ namespace annuaire.Controllers
 
         public IActionResult SiteForm(int id)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.Action = id == 0 ? "CreateSite" : "UpdateSite";
 
             return View(Site.GetSite(id));
@@ -51,6 +79,11 @@ namespace annuaire.Controllers
 
         public IActionResult UpdateSite(Site site)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (site.SaveModifications())
             {
                 return RedirectToAction("SiteEdit", "Admin", new { message = "Modifications effectuées" });
@@ -63,6 +96,11 @@ namespace annuaire.Controllers
 
         public IActionResult CreateSite(Site site)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (site.Save())
             {
                 return RedirectToAction("SiteEdit", "Admin", new { message = "Nouveau site enregistré" });
@@ -75,6 +113,11 @@ namespace annuaire.Controllers
 
         public IActionResult DepartmentEdit(string message)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.Message = message;
 
             return View(Department.GetDepartments());
@@ -82,6 +125,11 @@ namespace annuaire.Controllers
 
         public IActionResult DepartmentDelete(int id)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             string msg = null;
 
             Department department = Department.GetDepartment(id);
@@ -103,6 +151,11 @@ namespace annuaire.Controllers
 
         public IActionResult DepartmentForm(int id)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.Action = id == 0 ? "CreateDepartment" : "UpdateDepartment";
 
             return View(Department.GetDepartment(id));
@@ -110,6 +163,11 @@ namespace annuaire.Controllers
 
         public IActionResult UpdateDepartment(Department department)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (department.SaveModifications())
             {
                 return RedirectToAction("DepartmentEdit", "Admin", new { message = "Modifications effectuées" });
@@ -122,6 +180,11 @@ namespace annuaire.Controllers
 
         public IActionResult CreateDepartment(Department department)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (department.Save())
             {
                 return RedirectToAction("DepartmentEdit", "Admin", new { message = "Nouveau service enregistré" });
@@ -134,6 +197,11 @@ namespace annuaire.Controllers
 
         public IActionResult EmployeeEdit(string message)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.Message = message;
 
             return View(Employee.GetEmployees());
@@ -141,6 +209,11 @@ namespace annuaire.Controllers
 
         public IActionResult EmployeeDelete(int id)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             string msg = null;
 
             Employee employee = Employee.GetEmployee(id);
@@ -155,6 +228,11 @@ namespace annuaire.Controllers
 
         public IActionResult EmployeeForm(int id)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.Action = id == 0 ? "CreateEmployee" : "UpdateEmployee";
             ViewBag.Sites = Site.GetSites();
             ViewBag.Departments = Department.GetDepartments();
@@ -164,6 +242,11 @@ namespace annuaire.Controllers
 
         public IActionResult UpdateEmployee(Employee employee, Site site, Department department)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             employee.Site = site;
             employee.Department = department;
 
@@ -179,6 +262,11 @@ namespace annuaire.Controllers
 
         public IActionResult CreateEmployee(Employee employee, Site site, Department department)
         {
+            if (!_loginService.IsLogin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             employee.Site = site;
             employee.Department = department;
 
