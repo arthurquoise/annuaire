@@ -2,36 +2,36 @@
     ViewData["Title"] = "Page d'accueil";
 }
 
-<div class="container-sm mb-2">
-    <div class="form-floating mb-3">
-        <label for="Service">Nom</label>
-        <input type="email" class="form-control" id="floatingInput" placeholder="Nom du salarié ...">
-    </div>
-    <a class="btn btn-primary" href="#" role="button">Rechercher</a>
-</div>
-
-<div class="container-sm mb-2">
-    <div class="form-group">
-        <label for="department">Service</label>
-        <select class="form-control" id="department">
-            @foreach (Department d in ViewBag.Departments)
-            {
-                <option value="@d.DepartmentId">@d.DepartmentName</option>
-            }
-        </select>
-    </div>
-    <a class="btn btn-primary" href="#" role="button">Rechercher</a>
-</div>
-
-<div class="container-sm mb-2">
-    <div class="form-group">
-        <label for="site">Site</label>
-        <select class="form-control" id="site">
-            @foreach (Site s in ViewBag.Sites)
-            {
-                <option value="@s.SiteId">@s.SiteName</option>
-            }
-        </select>
-    </div>
-    <a class="btn btn-primary" href="#" role="button">Rechercher</a>
+<div class="container">
+    <form asp-controller="Home" asp-action="EmployeeList" method="post">
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label class="sr-only" for="name">Nom</label>
+                <input type="text" class="form-control mb-2" name="name" id="name" placeholder="Saisir un nom ...">
+            </div>
+            <div class="col-auto">
+                <label class="sr-only" for="department">Service</label>
+                <select class="form-control" id="department" name="departmentId">
+                    <option value="0">Tous</option>
+                    @foreach (Department d in ViewBag.Departments)
+                    {
+                        <option value="@d.DepartmentId">@d.DepartmentName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-auto">
+                <label class="sr-only" for="site">Site</label>
+                <select class="form-control" id="site" name="siteId">
+                    <option value="0">Tous</option>
+                    @foreach (Site s in ViewBag.Sites)
+                    {
+                        <option value="@s.SiteId">@s.SiteName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Rechercher</button>
+            </div>
+        </div>
+    </form>
 </div>

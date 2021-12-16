@@ -27,9 +27,26 @@ namespace annuaire.Controllers
             return View();
         }
 
-        public IActionResult EmployeeList()
+        public IActionResult EmployeeList(string name = null, int departmentId = 0, int siteId = 0)
         {
-            return View(Employee.GetEmployees());
+            string where = "";
+
+            if(name != null)
+            {
+                where += (where == "") ? $"lastname like '{name}%'" : $" AND lastname like '{name}%'";
+            }
+
+            if (departmentId != 0)
+            {
+                where += (where == "") ? $"department_id = {departmentId}" : $" AND department_id like {departmentId}";
+            }
+
+            if (departmentId != 0)
+            {
+                where += (where == "") ? $"site_id = {siteId}" : $" AND site_id like {siteId}";
+            }
+
+            return View(Employee.GetEmployees(where));
         }
 
         public IActionResult EmployeeDetail(int id)
