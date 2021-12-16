@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Employee>
+
+@if (ViewBag.Message != null)
+{
+    <div>
+        @ViewBag.Message
+    </div>
+}
+
+<div class="container">
+
+    <a asp-controller="Admin" asp-action="EmployeeForm">Créer un employé</a>
+    
+    <table class="table mt-2">
+        <thead>
+            <tr>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Département</th>
+                <th scope="col">Site</th>
+                <th scope="col">Editer</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Employee e in Model)
+            {
+                <tr>
+                    <td>@e.FirstName</td>
+                    <td>@e.LastName</td>
+                    <td>@e.Department.DepartmentName</td>
+                    <td>@e.Site.SiteName</td>
+                    <td><a asp-area="" asp-controller="Admin" asp-action="EmployeeForm" asp-route-id="@e.EmployeeId">Edit</a></td>
+                    <td><a asp-area="" asp-controller="Admin" asp-action="EmployeeDelete" asp-route-id="@e.EmployeeId">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

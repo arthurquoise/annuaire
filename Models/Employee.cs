@@ -42,8 +42,8 @@ namespace annuaire.Models
             command.Parameters.Add(new MySqlParameter("@landlinePhone", LandlinePhone));
             command.Parameters.Add(new MySqlParameter("@mobilePhone", MobilePhone));
             command.Parameters.Add(new MySqlParameter("@email", Email));
-            command.Parameters.Add(new MySqlParameter("@siteId", Site));
-            command.Parameters.Add(new MySqlParameter("@departmentId", Department));
+            command.Parameters.Add(new MySqlParameter("@siteId", Site.SiteId));
+            command.Parameters.Add(new MySqlParameter("@departmentId", Department.DepartmentId));
             connection.Open();
             EmployeeId = Convert.ToInt32(command.ExecuteScalar());
             command.Dispose();

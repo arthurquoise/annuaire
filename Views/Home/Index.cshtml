@@ -11,7 +11,7 @@
             </div>
             <div class="col-auto">
                 <label class="sr-only" for="department">Service</label>
-                <select class="form-control" id="department" name="departmentId">
+                <select class="form-control mb-2" id="department" name="departmentId">
                     <option value="0">Tous</option>
                     @foreach (Department d in ViewBag.Departments)
                     {
@@ -21,7 +21,7 @@
             </div>
             <div class="col-auto">
                 <label class="sr-only" for="site">Site</label>
-                <select class="form-control" id="site" name="siteId">
+                <select class="form-control mb-2" id="site" name="siteId">
                     <option value="0">Tous</option>
                     @foreach (Site s in ViewBag.Sites)
                     {
