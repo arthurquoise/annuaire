@@ -84,31 +84,43 @@ namespace annuaire.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            if (site.SaveModifications())
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("SiteEdit", "Admin", new { message = "Modifications effectuées" });
+                if (site.SaveModifications())
+                {
+                    return RedirectToAction("SiteEdit", "Admin", new { message = "Modifications effectuées" });
+                }
+                else
+                {
+                    return RedirectToAction("SiteEdit", "Admin", new { message = "Problème lors de l'enregistrement" });
+                }
             }
-            else
-            {
-                return RedirectToAction("SiteEdit", "Admin", new { message = "Problème lors de l'enregistrement" });
-            }
+
+            return View("SiteForm", site);
+
         }
 
-        public IActionResult CreateSite(Site site)
+        public IActionResult CreateSite([Bind("SiteName, SiteType")] Site site)
         {
             if (!_loginService.IsLogin())
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            if (site.Save())
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("SiteEdit", "Admin", new { message = "Nouveau site enregistré" });
+                if (site.Save())
+                {
+                    return RedirectToAction("SiteEdit", "Admin", new { message = "Nouveau site enregistré" });
+                }
+                else
+                {
+                    return RedirectToAction("SiteEdit", "Admin", new { message = "Problème lors de l'enregistrement" });
+                }
             }
-            else
-            {
-                return RedirectToAction("SiteEdit", "Admin", new { message = "Problème lors de l'enregistrement" });
-            }
+
+            return View("SiteForm", site);
+ 
         }
 
         public IActionResult DepartmentEdit(string message)
@@ -167,32 +179,43 @@ namespace annuaire.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            if (ModelState.IsValid)
+            {
+                if (department.SaveModifications())
+                {
+                    return RedirectToAction("DepartmentEdit", "Admin", new { message = "Modifications effectuées" });
+                }
+                else
+                {
+                    return RedirectToAction("DepartmentEdit", "Admin", new { message = "Problème lors de l'enregistrement" });
+                }
+            }
 
-            if (department.SaveModifications())
-            {
-                return RedirectToAction("DepartmentEdit", "Admin", new { message = "Modifications effectuées" });
-            }
-            else
-            {
-                return RedirectToAction("DepartmentEdit", "Admin", new { message = "Problème lors de l'enregistrement" });
-            }
+            return View("DepartmentForm", department);
+
         }
 
-        public IActionResult CreateDepartment(Department department)
+        public IActionResult CreateDepartment([Bind("DepartmentName")] Department department)
         {
             if (!_loginService.IsLogin())
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            if (department.Save())
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("DepartmentEdit", "Admin", new { message = "Nouveau service enregistré" });
+                if (department.Save())
+                {
+                    return RedirectToAction("DepartmentEdit", "Admin", new { message = "Nouveau service enregistré" });
+                }
+                else
+                {
+                    return RedirectToAction("DepartmentEdit", "Admin", new { message = "Problème lors de l'enregistrement" });
+                }
             }
-            else
-            {
-                return RedirectToAction("DepartmentEdit", "Admin", new { message = "Problème lors de l'enregistrement" });
-            }
+
+            return View("DepartmentForm", department);
+
         }
 
         public IActionResult EmployeeEdit(string message)
@@ -233,6 +256,7 @@ namespace annuaire.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            //select Create or Update form
             ViewBag.Action = id == 0 ? "CreateEmployee" : "UpdateEmployee";
             ViewBag.Sites = Site.GetSites();
             ViewBag.Departments = Department.GetDepartments();
@@ -260,15 +284,16 @@ namespace annuaire.Controllers
             }
         }
 
-        public IActionResult CreateEmployee(Employee employee, Site site, Department department)
+        public IActionResult CreateEmployee([Bind("FirstName, LastName, LandlinePhone, MobilePhone, Email")] Employee employee, [Bind("SiteId")] Site site, [Bind("DepartmentId")] Department department)
         {
             if (!_loginService.IsLogin())
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            employee.Site = site;
-            employee.Department = department;
+            employee.Site = Site.GetSite(site.SiteId);
+            employee.Department = Department.GetDepartment(department.DepartmentId);
+
 
             if (employee.Save())
             {

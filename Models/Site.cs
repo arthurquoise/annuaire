@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,7 +19,13 @@ namespace annuaire.Models
         private static MySqlDataReader reader;
 
         public int SiteId { get => siteId; set => siteId = value; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Compris entre 3 et 50 caractères", MinimumLength = 3)]
         public string SiteName { get => siteName; set => siteName = value; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Compris entre 3 et 50 caractères", MinimumLength = 3)]
         public string SiteType { get => siteType; set => siteType = value; }
 
         public Site()

@@ -12,6 +12,7 @@
             <div class="form-group col-md-6">
                 <label for="departmentName">Service</label>
                 <input type="text" class="form-control" name="departmentName" id="departmentName" value="@(Model != null ? Model.DepartmentName : "")">
+                <p class="text-danger">@Html.ValidationMessageFor(m => m.DepartmentName)</p>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Enregistrer</button>

@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,6 +18,9 @@ namespace annuaire.Models
         private static MySqlDataReader reader;
 
         public int DepartmentId { get => departmentId; set => departmentId = value; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Compris entre 3 et 50 caractères", MinimumLength = 3)]
         public string DepartmentName { get => departmentName; set => departmentName = value; }
 
         public Department()

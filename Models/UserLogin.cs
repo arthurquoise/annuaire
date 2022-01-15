@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace annuaire.Models
 {
@@ -21,7 +22,12 @@ namespace annuaire.Models
         private static MySqlDataReader reader;
 
         public int UserId { get => userId; set => userId = value; }
+
+        [Required]
+        [StringLength(15, ErrorMessage = "Wrong username", MinimumLength = 3)]
         public string Username { get => username; set => username = value; }
+
+        [Required]
         public string Password { get => password; set => password = value; }
 
         public static bool CheckAuthentification(UserLogin user)

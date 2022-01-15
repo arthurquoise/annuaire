@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,12 +24,31 @@ namespace annuaire.Models
         private static MySqlDataReader reader;
 
         public int EmployeeId { get => employeeId; set => employeeId = value; }
+
+        [Required]
+        [StringLength(20, ErrorMessage = "20 caractères maximum")]
         public string FirstName { get => firstName; set => firstName = value; }
+
+        [Required]
+        [StringLength(30, ErrorMessage = "30 caractères maximum")]
         public string LastName { get => lastName; set => lastName = value; }
+
+        [Required]
+        [StringLength(10, ErrorMessage = "Le numéro est incorrect", MinimumLength = 10)]
         public string LandlinePhone { get => landlinePhone; set => landlinePhone = value; }
+
+        [Required]
+        [StringLength(10, ErrorMessage = "Le numéro est incorrect", MinimumLength = 10)]
         public string MobilePhone { get => mobilePhone; set => mobilePhone = value; }
+
+        [Required]
+        [EmailAddress(ErrorMessage = "Adresse email invalide")]
         public string Email { get => email; set => email = value; }
+
+        [Required(ErrorMessage = "Veuillez sélectionner un lieux")]
         public Site Site { get => site; set => site = value; }
+
+        [Required(ErrorMessage = "Veuillez sélectionner un service")]
         public Department Department { get => department; set => department = value; }
 
         //Save a new employee

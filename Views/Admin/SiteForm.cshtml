@@ -12,10 +12,12 @@
             <div class="form-group col-md-6">
                 <label for="SiteName">Ville</label>
                 <input type="text" class="form-control" name="SiteName" id="siteName" value="@(Model != null ? Model.SiteName : "")">
+                <p class="text-danger">@Html.ValidationMessageFor(m => m.SiteName)</p>
             </div>
             <div class="form-group col-md-6">
                 <label for="siteType">Type de site</label>
                 <input type="text" class="form-control" id="siteType" name="siteType" value="@(Model != null ?Model.SiteType : "")">
+                <p class="text-danger">@Html.ValidationMessageFor(m => m.SiteType)</p>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
