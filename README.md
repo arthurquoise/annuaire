@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.png" alt="Markdownify" width="200"></a>
+  <a href="https://github.com/arthurquoise/annuaire"><img src="https://s1.qwant.com/thumbr/0x380/0/0/e95c13a46110d51c80904f4085204f21fc79b01a347f510e1bd1b896921925/phone_PNG48991.png?u=https%3A%2F%2Fpngimg.com%2Fuploads%2Fphone%2Fphone_PNG48991.png&q=0&b=1&p=0&a=0" alt="annuaire" width="200"></a>
   <br>
   Annuaire
   <br>
@@ -12,9 +12,6 @@
   <a href="#key-features">Pré-requis</a> •
   <a href="#Installation">Installation</a> •
   <a href="#Fonctionnalités">Fonctionnalités</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
-  <a href="#license">License</a>
 </p>
 
 ## Pré-requis
