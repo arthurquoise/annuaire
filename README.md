@@ -34,17 +34,27 @@ Pour cloner et lancer cette application, installer les pré-requis puis :
 $ https://github.com/arthurquoise/annuaire
 
 # Ouvrir annuaire.sql et exécuter la requête dans HeidiSQL ou PHPMyAdmin
-$ user : "root" mot de passe : ""
+$ Attention, utiliser les identifiants suivant pour la connexion SQL :
+$ user : "root"
+$ password : ""
 
-# Install dependencies
-$ npm install
+# Exécuter l'application
+$ Compiler le projet en lançant IIs Express
 
-# Run the app
-$ npm start
+# Panneau d'administration
+$ http://localhost:21544/Auth
+$ user : admin123
+$ password : admin
 ```
-
-Note: If you're using Linux Bash for Windows, [see this guide](<https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/>) or use `node` from the command prompt.
 
 ## Fonctionnalités
 
-You can [download](<https://github.com/amitmerchant1990/electron-markdownify/releases/tag/v1.2.0>) the latest installable version of Markdownify for Windows, macOS and Linux.
+
+* Visiteur
+	- Recherche multicritères
+	- Affichage des informations du collaborateur
+
+* Administration
+	- Ajout / Modification / Suppression d’informations 
+	- Accès secret au panneau d'administration
+	- Redirection en cas d'accès illicite
