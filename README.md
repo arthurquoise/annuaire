@@ -9,49 +9,49 @@
 <h4 align="center">Un projet web en ASP.NET. </h4>
 
 <p align="center">
-  <a href="#key-features">Pré-requis</a> •
-  <a href="#Installation">Installation</a> •
-  <a href="#Fonctionnalités">Fonctionnalités</a> •
+  <a href="#key-features">PrÃ©-requis</a> â€¢
+  <a href="#Installation">Installation</a> â€¢
+  <a href="#FonctionnalitÃ©s">FonctionnalitÃ©s</a> â€¢
 </p>
 
-## Pré-requis
+## PrÃ©-requis
 
 * [.NET5.0](<https://dotnet.microsoft.com/en-us/download/dotnet/5.0>)
-* MySQL 5.7 ou version supérieure
+* MySQL 5.7 ou version supÃ©rieure
 * PhpMyAdmin ou HeidiSQL
 * [Visual Studio](<https://visualstudio.microsoft.com/>)
 * [Git](<https://git-scm.com>)
 
 ## Installation
 
-Pour cloner et lancer cette application, installer les pré-requis puis :
+Pour cloner et lancer cette application, installer les prÃ©-requis puis :
 
 ```
-# Ouvrir le dépôt github depuis Visual Studio
+# Ouvrir le dÃ©pÃ´t github depuis Visual Studio
 $ https://github.com/arthurquoise/annuaire
 
-# Ouvrir annuaire.sql et exécuter la requête dans HeidiSQL ou PHPMyAdmin
+# Ouvrir annuaire.sql et exÃ©cuter la requÃªte dans HeidiSQL ou PHPMyAdmin
 $ Attention, utiliser les identifiants suivant pour la connexion SQL :
 $ user : "root"
 $ password : ""
 
-# Exécuter l'application
-$ Compiler le projet en lançant IIs Express
+# ExÃ©cuter l'application
+$ Compiler le projet en lanÃ§ant IIs Express
 
 # Panneau d'administration
-$ http://localhost:21544/Auth
+$ http://localhost:{port}/Auth
 $ user : admin123
 $ password : admin
 ```
 
-## Fonctionnalités
+## FonctionnalitÃ©s
 
 
 * Visiteur
-	- Recherche multicritères
+	- Recherche multicritÃ¨res
 	- Affichage des informations du collaborateur
 
 * Administration
-	- Ajout / Modification / Suppression d’informations 
-	- Accès secret au panneau d'administration
-	- Redirection en cas d'accès illicite
+	- Ajout / Modification / Suppression dâ€™informations 
+	- AccÃ¨s secret au panneau d'administration
+	- Redirection en cas d'accÃ¨s illicite
