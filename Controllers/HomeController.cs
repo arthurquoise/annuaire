@@ -18,7 +18,7 @@ namespace annuaire.Controllers
         {
             _logger = logger;
         }
-
+        //Default home page
         public IActionResult Index()
         {
             ViewBag.Sites = Site.GetSites();
@@ -27,6 +27,7 @@ namespace annuaire.Controllers
             return View();
         }
 
+        //List of employee
         public IActionResult EmployeeList(string name = null, int departmentId = 0, int siteId = 0)
         {
             string where = "";
@@ -49,6 +50,7 @@ namespace annuaire.Controllers
             return View(Employee.GetEmployees(where));
         }
 
+        //Employee detail
         public IActionResult EmployeeDetail(int id)
         {
             return View(Employee.GetEmployee(id));

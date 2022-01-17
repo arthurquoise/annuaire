@@ -28,6 +28,7 @@ namespace annuaire.Models
 
         }
 
+        //Save information of an employee
         public bool Save()
         {
             request = "INSERT INTO department (department_name) values (@DepartmentName); SELECT LAST_INSERT_ID()";
@@ -70,7 +71,7 @@ namespace annuaire.Models
             return nb == 1;
         }
 
-        //Check if employees are affected to the site
+        //Check if employees are affected with this department
         public bool DeleteVerification()
         {
             int result = -1;
@@ -93,7 +94,7 @@ namespace annuaire.Models
             return result == 0;
         }
 
-        //Get one site by id
+        //Get one department by id
         public static Department GetDepartment(int id)
         {
             Department department = null;

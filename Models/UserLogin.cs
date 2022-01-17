@@ -30,6 +30,7 @@ namespace annuaire.Models
         [Required]
         public string Password { get => password; set => password = value; }
 
+        //Check if the credentials are valid
         public static bool CheckAuthentification(UserLogin user)
         {
             int result = 0;
@@ -54,7 +55,7 @@ namespace annuaire.Models
             return result == 1;
 
         }
-
+        //Hash the password with MD5
         private static string HashPassword(string password)
         {
             using MD5 md5Hash = MD5.Create();

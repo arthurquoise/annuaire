@@ -12,6 +12,7 @@ namespace annuaire.Controllers
     {
         private ILogin _loginService;
 
+        //Add login interface in the constructor
         public AdminController(ILogin login)
         {
             _loginService = login;
@@ -26,6 +27,7 @@ namespace annuaire.Controllers
             return View();
         }
 
+        //List of sites
         public IActionResult SiteEdit(string message)
         {
             if (!_loginService.IsLogin())
@@ -65,6 +67,7 @@ namespace annuaire.Controllers
             return RedirectToAction("SiteEdit", "Admin", new { message = msg });
         }
 
+        //Site form
         public IActionResult SiteForm(int id)
         {
             if (!_loginService.IsLogin())
@@ -77,6 +80,7 @@ namespace annuaire.Controllers
             return View(Site.GetSite(id));
         }
 
+        //Update site
         public IActionResult UpdateSite(Site site)
         {
             if (!_loginService.IsLogin())
@@ -100,6 +104,7 @@ namespace annuaire.Controllers
 
         }
 
+        //Create site
         public IActionResult CreateSite([Bind("SiteName, SiteType")] Site site)
         {
             if (!_loginService.IsLogin())
@@ -123,6 +128,7 @@ namespace annuaire.Controllers
  
         }
 
+        //List of departments
         public IActionResult DepartmentEdit(string message)
         {
             if (!_loginService.IsLogin())
@@ -135,6 +141,7 @@ namespace annuaire.Controllers
             return View(Department.GetDepartments());
         }
 
+        //Delete department
         public IActionResult DepartmentDelete(int id)
         {
             if (!_loginService.IsLogin())
@@ -161,6 +168,7 @@ namespace annuaire.Controllers
             return RedirectToAction("DepartmentEdit", "Admin", new { message = msg });
         }
 
+        //Department form
         public IActionResult DepartmentForm(int id)
         {
             if (!_loginService.IsLogin())
@@ -173,6 +181,7 @@ namespace annuaire.Controllers
             return View(Department.GetDepartment(id));
         }
 
+        //Update department
         public IActionResult UpdateDepartment(Department department)
         {
             if (!_loginService.IsLogin())
@@ -195,6 +204,7 @@ namespace annuaire.Controllers
 
         }
 
+        //Create department
         public IActionResult CreateDepartment([Bind("DepartmentName")] Department department)
         {
             if (!_loginService.IsLogin())
@@ -218,6 +228,7 @@ namespace annuaire.Controllers
 
         }
 
+        //List of employees
         public IActionResult EmployeeEdit(string message)
         {
             if (!_loginService.IsLogin())
@@ -230,6 +241,7 @@ namespace annuaire.Controllers
             return View(Employee.GetEmployees());
         }
 
+        //Delete employee
         public IActionResult EmployeeDelete(int id)
         {
             if (!_loginService.IsLogin())
@@ -249,6 +261,7 @@ namespace annuaire.Controllers
             return RedirectToAction("EmployeeEdit", "Admin", new { message = msg });
         }
 
+        //Employee form
         public IActionResult EmployeeForm(int id)
         {
             if (!_loginService.IsLogin())
@@ -264,6 +277,7 @@ namespace annuaire.Controllers
             return View(Employee.GetEmployee(id));
         }
 
+        //Update employee
         public IActionResult UpdateEmployee(Employee employee, Site site, Department department)
         {
             if (!_loginService.IsLogin())
@@ -284,6 +298,7 @@ namespace annuaire.Controllers
             }
         }
 
+        //Create employee
         public IActionResult CreateEmployee([Bind("FirstName, LastName, LandlinePhone, MobilePhone, Email")] Employee employee, [Bind("SiteId")] Site site, [Bind("DepartmentId")] Department department)
         {
             if (!_loginService.IsLogin())

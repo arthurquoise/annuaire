@@ -48,6 +48,7 @@ namespace annuaire
 
             app.UseAuthorization();
 
+            //Use session in the app configuration
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
@@ -56,6 +57,7 @@ namespace annuaire
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+                //add login path as default for Auth controller
                 endpoints.MapControllerRoute(name: "Auth",
                 pattern: "Auth/{*Login}",
                 defaults: new { controller = "Auth", action = "Login" });

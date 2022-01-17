@@ -13,6 +13,7 @@ namespace annuaire.Controllers
 
         private ILogin _loginService;
 
+        //Add login interface to the constructor
         public AuthController(ILogin login)
         {
             _loginService = login;
@@ -24,6 +25,7 @@ namespace annuaire.Controllers
             return View();
         }
 
+        //Check user credentials
         public IActionResult LoginAccess(UserLogin user)
         {
             if (UserLogin.CheckAuthentification(user))
